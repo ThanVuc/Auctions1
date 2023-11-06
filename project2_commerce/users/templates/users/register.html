@@ -1,0 +1,64 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}
+    <title>Register</title>
+    <style>
+        .log{
+            height: 4vh;
+            width: 15vw;
+        }
+
+        .user{
+            height: 13vh;
+            width: 40vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .inp{
+            height: 4vh;
+            width: 15vw;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Register: </h1>
+    <h2> {{message}} </h2>
+    <form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %}
+    <div class="user">
+        <div>
+            <p>First Name: </p>
+            <input type="text" name="first" class="inp">
+        </div>
+        <div>
+            <p>Last Name: </p>
+            <input type="text" name="last" class="inp">
+        </div>
+    </div>
+    <div class="user">
+    <div>
+        <p>Username: </p>
+        <input type="text" name="username" class="inp">
+    </div>
+    <div>
+        <p>Email: </p>
+        <input type="email" name="email" class="inp">
+    </div>
+    </div>
+    <div class="user">
+    <div>
+        <p>Password: </p>
+        <input type="password" name="password" class="inp">
+    </div>
+    <div>
+        <p>Confirmation: </p>
+        <input type="password" name="confirmation" class="inp">
+    </div>
+    </div>
+    <input type="submit" value="Register" style="margin-top: 20px; padding: 7px 15px;">
+    </form>
+{% endblock %}
